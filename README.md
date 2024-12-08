@@ -57,7 +57,23 @@ Component Goals -:
 
 ![Screenshot 2024-12-08 202527](https://github.com/user-attachments/assets/798f06c4-6e8f-458d-bea5-35cd984a92b2)
 
-### 3) Personalized Nutritional Recommendations with Real-time Food Intake Monitoring
+### 3) Personalized Nutrition Recommendations and generate personalized meal plan 
+
+Sri Lanka is witnessing a growing interest in healthy lifestyles and fitness across all income levels. However, existing nutritional and fitness solutions often fail to meet the needs of the average Sri Lankan family due to their high cost, complexity, or lack of cultural relevance. This project addresses these gaps by developing an affordable, culturally appropriate, and user-friendly system for personalized meal planning and fitness guidance.
+
+Key Features:
+
+Personalized Plans: Custom meal and fitness recommendations tailored to individual goals, preferences, and activity levels.
+Sri lankan Relevance: Incorporates Sri Lankan cuisine, traditional dietary practices, and local ingredients.
+Affordability: Designed to be accessible to users across various income levels.
+Technology-Driven: Utilizes Machine Learning, Natural Language Processing, and Data Analytics for intelligent recommendations.
+
+This platform aims to empower Sri Lankans to achieve their health and fitness goals sustainably, bridging the gap between affordability, simplicity, and cultural compatibility.
+
+
+
+
+
 
 
 
