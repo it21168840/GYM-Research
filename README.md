@@ -72,7 +72,8 @@ How It Works
 
 1. User Input - Users enter essential information, including, Dietary preferences, Fitness goals, Health data.
 2. System Processing- The platform leverages Machine Learning and  Analyze user inputs Match them with preferences appropriate meal plans and fitness guidelines. Align recommendations with personal health and fitness goals.
-   3.Personalized Output - The system generates tailored solutions,  Daily 7*4 meal suggestions. Nutritional Insights, Breakdown of calories, protein, and carbohydrates. Regenerates plans based on user feedback and progress.
+
+3.Personalized Output - The system generates tailored solutions,  Daily 7*4 meal suggestions. Nutritional Insights, Breakdown of calories, protein, and carbohydrates. Regenerates plans based on user feedback and progress.
 
 
 ### Wireframes
