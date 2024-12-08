@@ -54,8 +54,7 @@ Component Goals -:
 
 ### Wireframes
 
-![Screenshot 2024-12-01 173058](https://github.com/user-attachments/assets/a0a9d373-16c7-4925-9fde-adae6559558e) ![Screenshot 2024-12-01 173137](https://github.com/user-attachments/assets/b39be2f6-172f-43fa-8747-13da6c2986be) ![Screenshot 2024-12-01 173245](https://github.com/user-attachments/assets/899e0813-bfde-4440-b17d-b94b9e50d831)
-
+![Screenshot 2024-12-08 202527](https://github.com/user-attachments/assets/8a7f0f08-d049-40bc-82e9-87408ca2632e)
 
 ### 3) Personalized Nutritional Recommendations with Real-time Food Intake Monitoring
 
