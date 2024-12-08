@@ -16,7 +16,8 @@
 
 ### Overall System Diagram Of Project
 
-  ![Screenshot 2024-12-08 202527](https://github.com/user-attachments/assets/cf9c88b8-fcd7-43ea-947d-47db1115a8eb)
+  ![image](https://github.com/user-attachments/assets/2e9ccf62-d263-4ee0-b736-a00305c7edf2)
+
 
 ### 1) Personalized Workout Plan Suggesting System
 
@@ -54,7 +55,7 @@ Component Goals -:
 
 ### Wireframes
 
-![Screenshot 2024-12-08 202527](https://github.com/user-attachments/assets/8a7f0f08-d049-40bc-82e9-87408ca2632e)
+![Screenshot 2024-12-08 202527](https://github.com/user-attachments/assets/798f06c4-6e8f-458d-bea5-35cd984a92b2)
 
 ### 3) Personalized Nutritional Recommendations with Real-time Food Intake Monitoring
 
