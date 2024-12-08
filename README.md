@@ -16,7 +16,7 @@
 
 ### Overall System Diagram Of Project
 
-   ![image](https://github.com/user-attachments/assets/29c2b596-915f-406d-b2af-03764ea324d3)
+  ![Screenshot 2024-12-08 202527](https://github.com/user-attachments/assets/cf9c88b8-fcd7-43ea-947d-47db1115a8eb)
 
 ### 1) Personalized Workout Plan Suggesting System
 
