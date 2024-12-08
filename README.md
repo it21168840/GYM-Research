@@ -70,7 +70,17 @@ Technology-Driven: Utilizes Machine Learning, Natural Language Processing, and D
 
 This platform aims to empower Sri Lankans to achieve their health and fitness goals sustainably, bridging the gap between affordability, simplicity, and cultural compatibility.
 
+### Wireframes
 
+
+
+![WhatsApp Image 2024-12-03 at 22 19 46](https://github.com/user-attachments/assets/e1dc21aa-b837-460d-bef6-9a11e079d553)
+
+![WhatsApp Image 2024-12-03 at 22 20 04](https://github.com/user-attachments/assets/b7afc7fa-942e-4209-b0b6-27d44826acdb)
+
+![WhatsApp Image 2024-12-03 at 22 20 24](https://github.com/user-attachments/assets/57058715-9b8f-4868-9f0d-511bd86e1315)
+
+![WhatsApp Image 2024-12-03 at 22 20 41](https://github.com/user-attachments/assets/f4587479-068d-4f7c-9b92-f6b7fa5c947d)
 
 
 
