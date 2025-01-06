@@ -1,0 +1,139 @@
+{
+	"info": {
+		"_postman_id": "72e54d78-c419-4ca2-8e67-d12bc0dd229a",
+		"name": "Gym App",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "37340823"
+	},
+	"item": [
+		{
+			"name": "stress",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"Q1A\":2,\"Q1I\":23,\"Q1E\":5081,\"Q2A\":3,\"Q2I\":11,\"Q2E\":6837,\"Q3A\":2,\"Q3I\":37,\"Q3E\":5521,\"Q4A\":1,\"Q4I\":27,\"Q4E\":4556,\"Q5A\":3,\"Q5I\":28,\"Q5E\":3269,\"Q6A\":3,\"Q6I\":26,\"Q6E\":3231,\"Q7A\":4,\"Q7I\":2,\"Q7E\":7138,\"Q8A\":2,\"Q8I\":19,\"Q8E\":3079,\"Q9A\":3,\"Q9I\":31,\"Q9E\":9650,\"Q10A\":3,\"Q10I\":17,\"Q10E\":4179,\"Q11A\":2,\"Q11I\":5,\"Q11E\":5928,\"Q12A\":1,\"Q12I\":21,\"Q12E\":2838,\"Q13A\":1,\"Q13I\":20,\"Q13E\":2560,\"Q14A\":4,\"Q14I\":29,\"Q14E\":5139,\"Q15A\":2,\"Q15I\":22,\"Q15E\":3597,\"Q16A\":2,\"Q16I\":35,\"Q16E\":3336,\"Q17A\":3,\"Q17I\":10,\"Q17E\":4506,\"Q18A\":1,\"Q18I\":14,\"Q18E\":2695,\"Q19A\":1,\"Q19I\":25,\"Q19E\":8128,\"Q20A\":2,\"Q20I\":15,\"Q20E\":3125,\"Q21A\":1,\"Q21I\":6,\"Q21E\":4061,\"Q22A\":1,\"Q22I\":40,\"Q22E\":4272,\"Q23A\":1,\"Q23I\":12,\"Q23E\":4029,\"Q24A\":1,\"Q24I\":9,\"Q24E\":5630,\"Q25A\":1,\"Q25I\":18,\"Q25E\":30631,\"Q26A\":2,\"Q26I\":24,\"Q26E\":9870,\"Q27A\":4,\"Q27I\":4,\"Q27E\":2411,\"Q28A\":1,\"Q28I\":16,\"Q28E\":9478,\"Q29A\":3,\"Q29I\":1,\"Q29E\":7618,\"Q30A\":3,\"Q30I\":32,\"Q30E\":12639,\"Q31A\":3,\"Q31I\":34,\"Q31E\":5378,\"Q32A\":1,\"Q32I\":41,\"Q32E\":8923,\"Q33A\":2,\"Q33I\":38,\"Q33E\":2977,\"Q34A\":4,\"Q34I\":3,\"Q34E\":5620,\"Q35A\":1,\"Q35I\":7,\"Q35E\":16760,\"Q36A\":1,\"Q36I\":8,\"Q36E\":6427,\"Q37A\":2,\"Q37I\":39,\"Q37E\":3760,\"Q38A\":1,\"Q38I\":13,\"Q38E\":4112,\"Q39A\":3,\"Q39I\":42,\"Q39E\":2769,\"Q40A\":4,\"Q40I\":33,\"Q40E\":4432,\"Q41A\":4,\"Q41I\":30,\"Q41E\":3643,\"Q42A\":2,\"Q42I\":36,\"Q42E\":3698,\"source\":2,\"introelapse\":3,\"testelapse\":261,\"surveyelapse\":336,\"VCL1\":1,\"VCL2\":0,\"VCL3\":0,\"VCL4\":1,\"VCL5\":1,\"VCL6\":0,\"VCL7\":0,\"VCL8\":0,\"VCL9\":0,\"VCL10\":1,\"VCL11\":0,\"VCL12\":0,\"VCL13\":0,\"VCL14\":1,\"VCL15\":1,\"VCL16\":1,\"education\":1,\"urban\":3,\"gender\":2,\"engnat\":1,\"age\":13,\"screensize\":2,\"uniquenetworklocation\":1,\"hand\":2,\"religion\":4,\"orientation\":5,\"race\":70,\"voted\":2,\"married\":1,\"familysize\":5}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/api/stress",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"stress"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "emotion",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "img",
+							"type": "file",
+							"src": "/C:/Users/isuru/Dropbox/Freelance 2024/Group/Gym App/data/emotion/train/disgusted/im0.png"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/api/emotion",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"emotion"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "workout",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"Age\":39,\"Gender\":\"Female\",\"Weight (kg)\":56.81,\"Height (cm)\":159.7,\"Fitness_Level\":\"Advanced\",\"Health_Conditions\":\"Diabetes\",\"Workout_Goal\":\"Strength Building\",\"Purpose_of_Workout\":\"Bodybuilding\",\"Preferred_Exercise\":\"Cardio\",\"Weekly_Workouts\":4,\"Time_Per_Session\":\"1 hour\",\"Equipment\":\"Treadmill\",\"Activity_Level\":\"High\",\"Diet_Preferences\":\"Vegetarian\",\"Injuries\":\"\",\"Intensity\":\"Medium\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/api/workout",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"workout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "meal",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"ID\":\"U0002\",\r\n\"Fitness Goal\":\"Maintenance\",\r\n\"Allergies\":\"Seafoods\",\r\n\"Veganism\":\"Non-veg\",\r\n\"Health Condition\":\"Diabetes\",\r\n\"Preferences\":\"Mix\",\r\n\"Activity Level\":\"Very active\",\r\n\"Body Type\":\"Lean\",\r\n\"Workout Routine\":\"Weight training\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/api/meal",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"meal"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
