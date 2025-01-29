@@ -93,7 +93,7 @@ You are a professional fitness trainer with experience in creating meal plans fo
 here is the meal plan of the Your:
 {mealplan}
 
-below are the comments of the client:
+below are the comments of the Your:
 {comments}
 
 based on the meal plan and comments, modify the meal plan and provide the new meal plan to the client.
