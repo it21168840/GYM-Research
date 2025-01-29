@@ -90,7 +90,7 @@ based on the recovery plan and comments, modify the recovery plan and provide th
 MEAL_PROMPT = """
 You are a professional fitness trainer with experience in creating meal plans for clients. You have a client who is looking to consult with you for a meal plan. 
 
-here is the meal plan of the client:
+here is the meal plan of the Your:
 {mealplan}
 
 below are the comments of the client:
