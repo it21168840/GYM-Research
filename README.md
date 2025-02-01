@@ -2,6 +2,8 @@
 
 ## AI-Powered Personalized Gym Activity System for Holistic Health and Fitness Management
 
+## Our Project Link -> https://github.com/it21168840/GYM-Research
+
 ### Introduction
 
 The AI-Powered Personalized Gym Activity System for Holistic Health and Fitness Management is a comprehensive solution designed to enhance fitness and well-being through personalized AI-driven components. The Personalized Workout Plan Suggesting System utilizes advanced AI models to analyze user data and generate adaptable workout plans tailored to fitness goals, preferences, and real-time feedback, fostering motivation and engagement. Complementing this, the Personalized Real-Time Exercise Pose Detection and Correction System employs machine learning techniques to ensure accurate exercise form, reduce injury risks, and provide instant feedback through a user-friendly mobile app. The Personalized Nutrition Recommendations Component addresses dietary needs by generating culturally relevant, affordable meal plans using machine learning, aligned with user fitness goals and Sri Lankan cuisine preferences, while dynamically adapting based on progress. Finally, the **Personalized Stress Management and Recovery Optimization System integrates mood detection through facial expression analysis and stress questionnaires, using machine learning to develop real-time, tailored recovery plans that adapt to user feedback and changing stress levels. Together, these components create a holistic, user-centric platform to optimize health, fitness, and emotional well-being.
