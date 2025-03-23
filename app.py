@@ -1,5 +1,6 @@
+import os
 import pickle
-import yaml, os
+import datetime
 import cv2 as cv
 import numpy as np
 import pandas as pd
@@ -7,30 +8,15 @@ import tensorflow as tf
 from deepface import DeepFace
 import matplotlib.pyplot as plt
 from flask import Flask, request, jsonify
-
-from llama_index.core.llms import (
-                                ChatMessage,
-                                MessageRole
-                                )
-from llama_index.core import ChatPromptTemplate
-from llama_index.llms.groq import Groq
-from llama_index.core import Settings
 from flask_cors import CORS
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = 'uploads'
-CORS(app)
 
-with open('secrets.yaml') as f:
-    secrets = yaml.load(f, Loader=yaml.FullLoader)
 
-os.environ["GROQ_API_KEY"] = secrets['GROQ_API_KEY']
-completion_llm = Groq(
-                    model="llama3-70b-8192", 
-                    api_key=os.environ["GROQ_API_KEY"],
-                    temperature=0.3
-                    )
-Settings.llm = completion_llm
+CORS(app)  # Enable CORS for all routes
+
+
 
 model_emotion = tf.keras.models.load_model('artifacts/emotion_model.h5')
 model_emotion.compile(
@@ -59,77 +45,8 @@ with open('artifacts/model_meal.pkl', 'rb') as f:
 with open('artifacts/model_stress.pkl', 'rb') as f:
     model_stress = pickle.load(f)
 
-
-
-EX_PROMPT = """
-You are a professional fitness trainer and you have been assigned a new client.
-
-here is the workout plan of the client:
-{workoutplan}
-
-below are the comments of the client:
-{comments}
-
-based on the workout plan and comments, modify the workout plan and provide the new workout plan to the client.
-
-it should only return as a `List of JSON` object. DO NOT return any other string
-"""
-
-STRESS_PROMPT = """
-You are a professional fitness trainer with experience in mental health. You have a client who is experiencing stress.
-
-here is the recovery plan you provided to the client:
-{recoveryplan}
-
-below are the comments of the client:
-{comments}
-
-based on the recovery plan and comments, modify the recovery plan and provide the new recovery plan to the client.
-"""
-
-MEAL_PROMPT = """
-You are a professional fitness trainer with experience in creating meal plans for clients. You have a client who is looking to consult with you for a meal plan. 
-
-here is the meal plan of the Your:
-{mealplan}
-
-below are the comments of the Your:
-{comments}
-
-based on the meal plan and comments, modify the meal plan and provide the new meal plan to the client.
-
-it should only return as a `List of JSON` object. DO NOT return any other string
-"""
-ex_template = ChatPromptTemplate(
-                                message_templates=[
-                                                ChatMessage(
-                                                            role=MessageRole.SYSTEM, 
-                                                            content=EX_PROMPT
-                                                            )
-                                                ]
-                                )
-
-stress_template = ChatPromptTemplate(
-                                message_templates=[
-                                                ChatMessage(
-                                                            role=MessageRole.SYSTEM, 
-                                                            content=STRESS_PROMPT
-                                                            )
-                                                ]
-                                )
-
-meal_template = ChatPromptTemplate(
-                                message_templates=[
-                                                ChatMessage(
-                                                            role=MessageRole.SYSTEM, 
-                                                            content=MEAL_PROMPT
-                                                            )
-                                                ]
-                                )
-
 def inference_stress(
                     sample_json,
-                    comments = None,
                     plan_path = "data/plans.xlsx"
                     ):
     sample_df = pd.DataFrame([sample_json])
@@ -154,16 +71,7 @@ def inference_stress(
     elif total_score <= 70:
         score_range = "61-70"
     recovery_plan = df_plans[df_plans["Score Range"] == score_range]["Recovery Plan"].values[0]
-    if comments is None:
-        return total_score, recovery_plan
-    
-    fmt_messages = stress_template.format(
-                                    recoveryplan=recovery_plan,
-                                    comments=comments
-                                    )
-    chat_response = completion_llm.complete(fmt_messages)
-    recovery_plan_updated = chat_response.text
-    return total_score, recovery_plan_updated
+    return total_score, recovery_plan
 
 def inference_emotion(img_path):
     objs = DeepFace.analyze(
@@ -179,8 +87,7 @@ def inference_emotion(img_path):
         return None
     
 def inference_workout(
-                    sample_json, 
-                    comments = None,
+                    sample_json,
                     workout_path = 'data/Work out ID dataset.csv',
                     ):
     sample_df = pd.DataFrame([sample_json])
@@ -199,22 +106,13 @@ def inference_workout(
     del workout_details['Workout_ID']
     
     workout_details = workout_details.to_dict(orient='records')
-    if comments is None:
-        return workout_details
-    
-    fmt_messages = ex_template.format(
-                                    workoutplan=workout_details,
-                                    comments=comments
-                                    )
-    chat_response = completion_llm.complete(fmt_messages)
-    workout_details_updated = chat_response.text
-    return workout_details_updated
+    return workout_details
 
 def inference_meal(
-                    sample_json, 
-                    comments = None,
-                    meal_path = 'data/Plans_ID50.xlsx'
-                    ):
+                sample_json, 
+                comments = None,
+                meal_path = 'data/Plans_ID50.xlsx'
+                ):
     df = pd.DataFrame([sample_json])
     del df['ID'], df['Allergies'], df['Health Condition']
 
@@ -230,25 +128,12 @@ def inference_meal(
     df_meal = pd.read_excel(meal_path)
     df_meal = df_meal[df_meal['ID'].str.contains(P)]
     df_meal = df_meal.to_dict(orient='records')
-    if comments is None:
-        return df_meal
-    
-    fmt_messages = meal_template.format(
-                                    mealplan=df_meal,
-                                    comments=comments
-                                    )
-    chat_response = completion_llm.complete(fmt_messages)
-    meal_plan_updated = chat_response.text
-    return meal_plan_updated
+    return df_meal
 
 @app.route('/api/stress', methods=['POST'])
 def stress():
     sample_json = request.json
-    comments = sample_json.pop('comments', None)
-    total_score, recovery_plan = inference_stress(
-                                                sample_json,
-                                                comments=comments
-                                                )
+    total_score, recovery_plan = inference_stress(sample_json)
     return jsonify({
                     "total_score": f"{total_score} / 70",
                     "recovery_plan": recovery_plan
@@ -265,22 +150,51 @@ def emotion():
 @app.route('/api/workout', methods=['POST'])
 def workout():
     sample_json = request.json
-    comments = sample_json.pop('comments', None)
-    workout_details = inference_workout(
-                                        sample_json,
-                                        comments=comments
-                                        )
+    workout_details = inference_workout(sample_json)
     return jsonify(workout_details)
 
 @app.route('/api/meal', methods=['POST'])
 def meal():
-    sample_json = request.json
-    comments = sample_json.pop('comments', None)
-    meal_details = inference_meal(
-                                sample_json,
-                                comments=comments
-                                )
-    return jsonify(meal_details)
+    try:
+        print("Received meal request")
+        if not request.json:
+            print("No JSON data received")
+            return jsonify({"error": "No JSON data provided"}), 400
+        
+        # Log the request data for debugging
+        print("Request data:", request.json)
+        
+        # Make a copy to avoid modifying the original
+        sample_json = request.json.copy()
+        comments = sample_json.pop('comments', None)
+        
+        # Call the inference function with proper error handling
+        meal_details = inference_meal(
+            sample_json,
+            comments=comments
+        )
+        
+        # Ensure the response is JSON serializable
+        print("Successfully generated meal plan")
+        response = jsonify(meal_details)
+        response.headers.add('Content-Type', 'application/json')
+        return response
+        
+    except Exception as e:
+        print(f"Error in meal endpoint: {str(e)}")
+        import traceback
+        traceback.print_exc()
+        error_response = jsonify({"error": str(e)})
+        error_response.headers.add('Content-Type', 'application/json')
+        return error_response, 500
+
+@app.route('/hello', methods=['GET'])
+def hello_world():
+    return jsonify({
+        "message": "Hello, World!",
+        "status": "success"
+    }), 200
+
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', debug=True)
